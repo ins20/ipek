@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Моудули</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <aside>
+      <nav>
+        <a href="index.html">Пользователи</a>
+        <a href="modules.html">Модули</a>
+        <a href="passwords.html">Пароли</a>
+      </nav>
+    </aside>
+    <main>
+      <form>
+        <input
+          placeholder="Название модуля"
+          id="module"
+          type="text"
+          name="module"
+          required
+        />
+        <textarea
+          name="note"
+          id="note"
+          cols="30"
+          rows="2"
+          placeholder="Заметка"
+        ></textarea>
+        <button type="submit">Добавить модуль</button>
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>Наименование</th>
+            <th>Заметка</th>
+            <th>Действия</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </main>
+  </body>
+
+  <script>
+    const modules = [
+      {
+        id: 1,
+        name: "Модуль 1",
+        note: "заметка 1",
+      },
+      {
+        id: 2,
+        name: "Модуль 1",
+        note: "заметка 1",
+      },
+      {
+        id: 3,
+        name: "Модуль 1",
+        note: "заметка 1",
+      },
+    ];
+
+    const form = document.querySelector("form");
+    const table = document.querySelector("table");
+    const tbody = table.querySelector("tbody");
+
+    tbody.innerHTML = modules
+      .map(({ id, fio, lot, lang, login, password }) => {
+        return `
+        <tr>
+            <td>Модуль 1</td>
+            <td>заметка 1</td>
+            <td>
+              <button onclick="deleteDB(${id})">Удалить базу</button>
+              <button onclick="deleteFolders(${id})">Удалить папки</button>
+              <button onclick="deleteModule(${id})">Удалить модуль</button>
+              <button onclick="disableModule(${id})">Отключить модуль</button>
+            </td>
+          </tr>
+      `;
+      })
+      .join("");
+
+    function deleteDB(id) {
+      console.log(id);
+      // fetch(`deleteDB`, {}).then((res) => (tbody.innerHTML = res));
+    }
+    function deleteFolders(id) {
+      console.log(id);
+      // fetch(`deleteFolders`, {}).then((res) => (tbody.innerHTML = res));
+    }
+    function deleteModule(id) {
+      console.log(id);
+      // fetch(`deleteModule`, {}).then((res) => (tbody.innerHTML = res));
+    }
+    function disableModule(id) {
+      console.log(id);
+      // fetch(`disableModule`, {}).then((res) => (tbody.innerHTML = res));
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+
+      const formValues = {
+        module: formData.get("module"),
+        note: formData.get("note"),
+      };
+
+      // fetch(`createModule`, {}).then((res) => (tbody.innerHTML = res));
+      console.log(formValues);
+    });
+  </script>
+</html>

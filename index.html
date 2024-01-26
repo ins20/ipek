@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Пользователи</title>
+  </head>
+  <body>
+    <aside>
+      <nav>
+        <a href="index.html">Пользователи</a>
+        <a href="modules.html">Модули</a>
+        <a href="passwords.html">Пароли</a>
+      </nav>
+    </aside>
+    <main>
+      <form>
+        <input placeholder="ФИО" id="fio" type="text" name="fio" required />
+
+        <input
+          type="number"
+          placeholder="Номер жеребьевки"
+          name="lot"
+          required
+        />
+
+        <label>
+          <input name="lang" type="radio" value="python" required />
+          <span>Python</span>
+        </label>
+
+        <label>
+          <input name="lang" type="radio" value="php" />
+          <span>PHP</span>
+        </label>
+        <br />
+        <button type="submit">Создать пользователя</button>
+      </form>
+      <button onclick="generateCards()">Сформировать карточки</button>
+      <table>
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>ФИО</th>
+            <th>Тип</th>
+            <th>Номер жеребьевки</th>
+            <th>Логин</th>
+            <th>Пароль</th>
+            <th>Действия</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </main>
+  </body>
+
+  <script>
+    const users = [
+      {
+        id: 1,
+        fio: "Иванов Иван Иванович",
+        lot: 1,
+        lang: "python",
+        login: "admin",
+        password: "admin",
+      },
+      {
+        id: 2,
+        fio: "Иванов Иван Иванович",
+        lot: 1,
+        lang: "python",
+        login: "admin",
+        password: "admin",
+      },
+      {
+        id: 3,
+        fio: "Иванов Иван Иванович",
+        lot: 1,
+        lang: "python",
+        login: "admin",
+        password: "admin",
+      },
+    ];
+
+    const form = document.querySelector("form");
+    const table = document.querySelector("table");
+    const tbody = table.querySelector("tbody");
+
+    tbody.innerHTML = users
+      .map(({ id, fio, lot, lang, login, password }) => {
+        return `
+        <tr>
+          <td>${id}</td>
+          <td>${fio}</td>
+          <td>${lang}</td>
+          <td>${lot}</td>
+          <td>${login}</td>
+          <td>${password}</td>
+          <td>
+            <button onclick='deleteUser(${id})'>удалить</button>
+            <button onclick='cancelUser(${id})'>отменить</button>
+          </td>
+        </tr>
+      `;
+      })
+      .join("");
+
+    function generateCards() {
+      console.log(users);
+    }
+
+    function deleteUser(id) {
+      console.log(id);
+      // fetch(`deleteUsers`, {}).then((res) => (tbody.innerHTML = res));
+    }
+    function cancelUser(id) {
+      console.log(id);
+      // fetch(`cancelUsers`, {}).then((res) => (tbody.innerHTML = res));
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+
+      const formValues = {
+        fio: formData.get("fio"),
+        lot: formData.get("lot"),
+        lang: formData.get("lang"),
+      };
+      // fetch(`createUser`, {}).then((res) => (tbody.innerHTML = res));
+
+      console.log(formValues);
+    });
+  </script>
+</html>

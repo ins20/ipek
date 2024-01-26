@@ -1,0 +1,52 @@
+body,
+nav,
+form {
+  display: flex;
+  flex-wrap: wrap;
+}
+nav,
+form {
+  flex-direction: column;
+}
+nav {
+  gap: 10px;
+}
+main {
+  width: 90%;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+tr,
+td,
+th {
+  border: 1px solid lightgray;
+}
+input,
+button,
+textarea {
+  padding: 10px;
+  outline: none;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin: 5px;
+}
+button {
+  cursor: pointer;
+}
+th {
+  text-align: start;
+}
+textarea {
+  resize: none;
+}
+@media (max-width: 1200px) {
+  body {
+    flex-direction: column;
+  }
+  nav {
+    display: flex;
+    flex-direction: row;
+  }
+}
