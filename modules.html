@@ -4,54 +4,57 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Моудули</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
     <aside>
       <nav>
-        <a href="index.html">Пользователи</a>
-        <a href="modules.html">Модули</a>
-        <a href="passwords.html">Пароли</a>
+        <a href="index.html">
+          <i class="bx bx-user"></i>
+          <span> Пользователи </span>
+        </a>
+        <a href="modules.html">
+          <i class="bx bx-file-blank"></i>
+          <span> Модули </span>
+        </a>
+        <a href="passwords.html">
+          <i class="bx bx-lock-alt"></i>
+          <span> Пароли </span>
+        </a>
       </nav>
     </aside>
     <main>
-      <form>
-        <input
-          placeholder="Название модуля"
-          id="module"
-          type="text"
-          name="module"
-          required
-        />
-        <textarea
-          name="note"
-          id="note"
-          cols="30"
-          rows="2"
-          placeholder="Заметка"
-        ></textarea>
-        <button type="submit">Добавить модуль</button>
-      </form>
-      <table>
-        <thead>
-          <tr>
-            <th>Наименование</th>
-            <th>Заметка</th>
-            <th>Действия</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+      <h1>Управление модулями</h1>
+      <div style="display: flex; gap: 20px">
+        <form>
+          <input placeholder="Название модуля" id="module" type="text" name="module" required />
+          <textarea name="note" id="note" cols="30" rows="2" placeholder="Заметка"></textarea>
+          <button type="submit" class="blue-button">Добавить модуль</button>
+        </form>
+        <table>
+          <thead>
+            <tr>
+              <th>Наименование</th>
+              <th>Заметка</th>
+              <th>Действия</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </main>
   </body>
 
+  
   <script>
     const modules = [
       {
         id: 1,
         name: "Модуль 1",
-        note: "заметка 1",
+        note: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque debitis odio laborum magnam quidem? Perferendis maiores est nulla exercitationem delectus.",
       },
       {
         id: 2,
@@ -74,12 +77,28 @@
         return `
         <tr>
             <td>Модуль 1</td>
-            <td>заметка 1</td>
-            <td>
-              <button onclick="deleteDB(${id})">Удалить базу</button>
-              <button onclick="deleteFolders(${id})">Удалить папки</button>
-              <button onclick="deleteModule(${id})">Удалить модуль</button>
-              <button onclick="disableModule(${id})">Отключить модуль</button>
+            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque debitis odio laborum magnam quidem? Perferendis maiores est nulla exercitationem delectus.</td>
+            <td class='buttons'>
+              <button onclick="deleteDB(${id})">
+                <span>Удалить базу</span>
+                <i class='bx bx-trash' ></i>
+              </button>
+              <button onclick="deleteFolders(${id})">
+                <span>Удалить папки</span>
+                <i class='bx bx-trash' ></i>
+              </button>
+              <button onclick="deleteModule(${id})">
+                <span>Удалить модул</span>
+                <i class='bx bx-trash' ></i>
+              </button>
+              <button onclick="disableModule(${id})">
+                <span>Отключить модуль на запись</span>
+                <i class='bx bx-message-alt-x'></i>
+              </button>
+              <button onclick="disableModule(${id})">
+                <span>Отключить модуль на чтение и запись</span>
+                <i class='bx bx-message-alt-x'></i>
+              </button>
             </td>
           </tr>
       `;

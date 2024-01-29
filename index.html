@@ -5,39 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <title>Пользователи</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   </head>
   <body>
     <aside>
       <nav>
-        <a href="index.html">Пользователи</a>
-        <a href="modules.html">Модули</a>
-        <a href="passwords.html">Пароли</a>
+        <a href="index.html">
+          <i class="bx bx-user"></i>
+          <span> Пользователи </span>
+        </a>
+        <a href="modules.html">
+          <i class="bx bx-file-blank"></i>
+          <span> Модули </span>
+        </a>
+        <a href="passwords.html">
+          <i class="bx bx-lock-alt"></i>
+          <span> Пароли </span>
+        </a>
       </nav>
     </aside>
     <main>
-      <form>
+      <h1>Управление пользователями</h1>
+      <div style="display: flex; gap: 20px">
+        <form>
         <input placeholder="ФИО" id="fio" type="text" name="fio" required />
 
-        <input
-          type="number"
-          placeholder="Номер жеребьевки"
-          name="lot"
-          required
-        />
-
-        <label>
-          <input name="lang" type="radio" value="python" required />
-          <span>Python</span>
-        </label>
-
-        <label>
-          <input name="lang" type="radio" value="php" />
-          <span>PHP</span>
-        </label>
-        <br />
-        <button type="submit">Создать пользователя</button>
+        <div style="display: flex; gap: 12px">
+          <label>
+            <input name="lang" type="radio" value="python" required />
+            <span>Python</span>
+          </label>
+  
+          <label>
+            <input name="lang" type="radio" value="php" />
+            <span>PHP</span>
+          </label>
+        </div>
+        <button class="blue-button">Создать пользователя</button>
+        <button class="green-button" type="button" onclick="generateCards()">Сформировать карточки</button>
       </form>
-      <button onclick="generateCards()">Сформировать карточки</button>
       <table>
         <thead>
           <tr>
@@ -53,6 +59,8 @@
         <tbody></tbody>
       </table>
     </main>
+  </div>
+
   </body>
 
   <script>
@@ -97,9 +105,15 @@
           <td>${lot}</td>
           <td>${login}</td>
           <td>${password}</td>
-          <td>
-            <button onclick='deleteUser(${id})'>удалить</button>
-            <button onclick='cancelUser(${id})'>отменить</button>
+          <td class='buttons'>
+            <button onclick='deleteUser(${id})'>
+              <span>удалить</span>
+              <i class='bx bx-trash' ></i>
+            </button>
+            <button onclick='editUser(${id})'>
+              <span>редактировать</span>
+              <i class='bx bx-pencil' ></i>
+            </button>
           </td>
         </tr>
       `;
@@ -114,7 +128,7 @@
       console.log(id);
       // fetch(`deleteUsers`, {}).then((res) => (tbody.innerHTML = res));
     }
-    function cancelUser(id) {
+    function editUser(id) {
       console.log(id);
       // fetch(`cancelUsers`, {}).then((res) => (tbody.innerHTML = res));
     }
