@@ -10,6 +10,8 @@
   <body>
     <aside>
       <nav>
+        <a href="#modal">войти</a>
+
         <a href="index.html">
           <i class="bx bx-user"></i>
           <span> Пользователи </span>
@@ -26,7 +28,7 @@
     </aside>
     <main>
       <h1>Управление пользователями</h1>
-      <div style="display: flex; gap: 20px">
+      <div class='formNtable'>
         <form>
         <input placeholder="ФИО" id="fio" type="text" name="fio" required />
 
@@ -59,6 +61,16 @@
         <tbody></tbody>
       </table>
     </main>
+  </div>
+
+  <div id="modal">
+    <!-- <a href="#">x</a> -->
+    <div class="modal_content">
+      <form action="">
+        <input type="text" placeholder="login">
+        <input type="text" placeholder="password">
+      </form>
+    </div>
   </div>
 
   </body>

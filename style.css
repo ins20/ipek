@@ -24,12 +24,14 @@ form {
 }
 
 nav {
-  width: max-content;
+  min-width: max-content;
+  width: 100%;
   gap: 20px;
   padding: 20px;
   padding-top: 40px;
   background-color: #24292f;
   height: 100vh;
+
   & * {
     color: white;
     font-weight: 400;
@@ -105,6 +107,11 @@ th {
   body {
     flex-direction: column;
   }
+
+  table {
+    max-width: 100px;
+  }
+
   nav {
     display: flex;
     flex-direction: row;
@@ -112,4 +119,51 @@ th {
     padding-top: 20px;
     width: calc(100vw - 40px);
   }
+
+  .formNtable {
+    flex-direction: column;
+  }
+}
+
+#modal:not(:target) {
+  display: none;
+}
+
+#modal:target {
+  display: block;
+}
+
+#modal {
+
+  position: absolute;
+  background-color: #24292f;
+
+  width: 100%;
+  height: 100%;
+  left: 0%;
+  top: 0%;
+}
+
+#modal form {
+  width: 300px;
+  height: 300px;
+}
+
+#modal a {
+  color: white;
+  text-decoration: none;
+  font-size: 100px;
+  margin: 10px;
+}
+
+#modal .modal_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.formNtable {
+  display: flex;
+  gap: 20px
 }
